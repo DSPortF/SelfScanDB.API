@@ -4,9 +4,9 @@ Our hypothetical company provides self-checkout systems that allow retail custom
 
 Our internal helpdesk has been using in-house software but we have recently entered into a helpdesk contract with OracSync, who provide a comprehensive and customisable ticket management solution.  
 
-OracSync's customisations provide for generic text fields, but there is no validation against our customer database (SelfScanDB). In order to prevent data entry errors they will create an extension which calls an API into SelfScanDB to return information on accounts, shops and kiosks, and to update a table with basic ticketing information which is still used by some of our other internal systems.  
+OracSync's customisations provide for generic text fields, but there is no validation against our customer database (ScannerDB). In order to prevent data entry errors they will create an extension which calls an API into ScannerDB to return information on accounts, shops and kiosks, and to update a table with basic ticketing information which is still used by some of our other internal systems.  
 
-This project is that API. SelfScanDB is hosted on our internal systems so the API will be deployed to our DMZ.  
+This project is that API. ScannerDB is hosted on our internal systems so the API will be deployed to our DMZ.  
 
 
 ### Endpoints

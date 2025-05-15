@@ -1,10 +1,24 @@
-﻿namespace SelfScanDB.API
+﻿using SelfScanDB.API.Data;
+using SelfScanDB.API.Dto;
+
+namespace SelfScanDB.API;
+
+public class OracSync
 {
-    public class OracSync
+    private readonly IScannerDB _db;
+
+    public OracSync(IScannerDB db)
     {
-        public string HelloWorld()
-        {
-            return "Hello World";
-        }
+        _db = db;
+    }
+
+    public string HelloWorld()
+    {
+        return "Hello World";
+    }
+
+    public List<AccountDto> ListAccounts()
+    {
+        return _db.ListAccounts();
     }
 }
