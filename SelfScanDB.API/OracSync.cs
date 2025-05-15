@@ -12,11 +12,6 @@ public class OracSync
         _db = db;
     }
 
-    public string HelloWorld()
-    {
-        return "Hello World";
-    }
-
     public List<AccountDto> ListAccounts()
     {
         return _db.ListAccounts();

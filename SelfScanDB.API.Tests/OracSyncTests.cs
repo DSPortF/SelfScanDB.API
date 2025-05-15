@@ -8,19 +8,6 @@
         }
 
         [Test]
-        public void Test1_HelloWorld()
-        {
-            var testDB = new TestDB();
-
-            var sut = new OracSync(testDB);
-            string expected = "Hello World";
-            string actual = sut.HelloWorld();
-            
-            // Updated to use Assert.That with Is.EqualTo constraint
-            Assert.That(actual, Is.EqualTo(expected), "Function should have returned 'Hello World'");
-        }
-
-        [Test]
         public void ListAccount_ShouldReturnAccounts()
         {
             // Create test DB
