@@ -13,4 +13,9 @@ public class ScannerDB : IScannerDB
     {
         throw new NotImplementedException();
     }
+
+    public Shop ShopDetails(string accountGuid, int shopID)
+    {
+        throw new NotImplementedException();
+    }
 }

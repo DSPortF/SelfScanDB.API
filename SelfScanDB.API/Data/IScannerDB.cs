@@ -6,4 +6,5 @@ public interface IScannerDB
 {
     List<AccountDto> ListAccounts();
     List<Shop> ListAccountShops(string accountGuid);
+    Shop ShopDetails(string accountGuid, int shopID);
 }

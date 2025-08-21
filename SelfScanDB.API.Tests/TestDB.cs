@@ -1,5 +1,6 @@
 ﻿using SelfScanDB.API.Data;
 using SelfScanDB.API.Dto;
+using System.Security.Principal;
 
 namespace SelfScanDB.API.Tests;
 
@@ -38,5 +39,19 @@ internal class TestDB : IScannerDB
     public void AddShop(Shop s)
     {
         _shops.Add(s);
+    }
+
+    public Shop ShopDetails(string accountGuid, int shopID)
+    {
+        var account = _accounts.FirstOrDefault(a => a.AccountGuid == accountGuid);
+        if (account != null)
+        {
+            var shops = _shops.Where(s => s.AccountId == account.AccountId && s.ShopId == shopID).ToList();
+            if (shops.Count > 0)
+            {
+                return shops[0];
+            }
+        }
+        throw new KeyNotFoundException($"Shop with ID {shopID} not found for account {accountGuid}.");
     }
 }
