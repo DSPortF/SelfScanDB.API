@@ -31,8 +31,8 @@ public class Program
 
         app.UseAuthorization();
 
-        app.MapGet("/OracSync", ([FromServices] OracSync os) => os.ListAccounts())
-            .WithName("GetOracSync");
+        app.MapGet("/OracSync", ([FromServices] OracSync os) => os.ListAccounts());
+        app.MapGet("/OracSync/{accountGuid}", ([FromServices] OracSync os, string accountGuid) => os.ListAccountShops(accountGuid));
 
         app.Run();
     }

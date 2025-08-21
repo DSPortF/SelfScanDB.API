@@ -16,4 +16,9 @@ public class OracSync
     {
         return _db.ListAccounts();
     }
+
+    public List<Shop> ListAccountShops(string accountGuid)
+    {
+        return _db.ListAccountShops(accountGuid);
+    }
 }

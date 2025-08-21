@@ -8,4 +8,9 @@ public class ScannerDB : IScannerDB
     {
         throw new NotImplementedException();
     }
+
+    public List<Shop> ListAccountShops(string accountGuid)
+    {
+        throw new NotImplementedException();
+    }
 }
