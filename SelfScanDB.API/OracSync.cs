@@ -31,4 +31,14 @@ public class OracSync
     {
         return _db.ShopDetails(accountGuid, shopID);
     }
+
+    public void NewTicket(string accountGuid, int shopID, int ticketID, List<string> deviceNames)
+    {
+        _db.NewTicket(accountGuid, shopID, ticketID, deviceNames);
+    }
+
+    public void UpdateTicket(int ticketId, string newStatus)
+    {
+        _db.UpdateTicket(ticketId, newStatus);
+    }
 }

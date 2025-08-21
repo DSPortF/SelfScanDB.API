@@ -9,6 +9,9 @@ OracSync's customisations provide for generic text fields, but there is no valid
 This project is that API. ScannerDB is hosted on our internal systems so the API will be deployed to our DMZ.  
 
 
+All endpoints added and tested with internal tests.  
+Next job: make sure everything works in Postman or similar  
+
 ### Endpoints
 
 

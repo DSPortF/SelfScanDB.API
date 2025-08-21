@@ -1,4 +1,3 @@
-
 using Microsoft.AspNetCore.Mvc;
 using SelfScanDB.API.Data;
 
@@ -42,6 +41,15 @@ public class Program
 
         app.MapGet("/OracSync/DeviceList/{AccountGuid}/{ShopID}", 
             ([FromServices] OracSync os, string accountGuid, int ShopID) => os.DeviceList(accountGuid, ShopID));
+
+        // Takes a list of devices: "DeviceNames": ["DeviceA","DeviceB"] in the request body
+        // Creates a new ticket on our internal system linking the ticket number with the relevant details.
+        app.MapPost("/OracSync/NewTicket/{AccountGuid}/{ShopID}/{TicketID}",
+            ([FromServices] OracSync os, string AccountGuid, int ShopID, int TicketID, [FromBody] List<string> DeviceNames) =>
+            os.NewTicket(AccountGuid, ShopID, TicketID, DeviceNames));
+
+        app.MapPost("/OracSync/UpdateTicket/{TicketID}/{NewStatus}",
+            ([FromServices] OracSync os, int TicketID, string NewStatus) => os.UpdateTicket(TicketID, NewStatus));
 
         app.Run();
     }
