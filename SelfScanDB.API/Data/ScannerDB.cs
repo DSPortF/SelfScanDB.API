@@ -4,6 +4,11 @@ namespace SelfScanDB.API.Data;
 
 public class ScannerDB : IScannerDB
 {
+    public List<Device> DeviceList(string accountGuid, int shopID)
+    {
+        throw new NotImplementedException();
+    }
+
     public List<AccountDto> ListAccounts()
     {
         throw new NotImplementedException();

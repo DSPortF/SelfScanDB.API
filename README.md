@@ -67,7 +67,7 @@ Returns details of the shop and its device names
 \}  
 
 #### /OracSync/DeviceList/\{AccountGuid\}/\{ShopID\}  
-Takes a list of device names and returns the properties for the listed devices  
+Returns the properties for the devices at a shop  
 
 "DeviceList": [  
 \{  

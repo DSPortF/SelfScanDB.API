@@ -12,6 +12,11 @@ public class OracSync
         _db = db;
     }
 
+    public List<Device> DeviceList(string accountGuid, int shopID)
+    {
+        return _db.DeviceList(accountGuid, shopID);
+    }
+
     public List<AccountDto> ListAccounts()
     {
         return _db.ListAccounts();

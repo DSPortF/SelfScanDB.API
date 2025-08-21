@@ -71,5 +71,39 @@ namespace SelfScanDB.API.Tests
                 sut.ShopDetails("12345678-1234-1234-1234-123456789012", 999), 
                 "ShopDetails should throw KeyNotFoundException for non-existing shop ID");
         }
+
+        [Test]
+        public void DeviceList_ShouldReturnDeviceDetails()
+        {
+            var testDB = new TestDB();
+            testDB.AddAccount(1, "Tertiark", "12345678-1234-1234-1234-123456789012");
+            var testDev1 = new Device("Device1", "DevType - Test", DateTime.Now, "xyz123a");
+            var testDev2 = new Device("Device2", "DevType - Test", DateTime.Now, "abc987d");
+            var testShop = new Shop(51, "Tertiark - Macclesfield", "427 Castle Street, Macclesfield, Cheshire, SK11 6XX", 1);
+            testShop.AddDevice(testDev1);
+            testShop.AddDevice(testDev2);
+            testDB.AddShop(testShop);
+
+            var sut = new OracSync(testDB);
+            var result = sut.DeviceList("12345678-1234-1234-1234-123456789012", 51);
+            Assert.That(result, Has.Exactly(2).Items, "DeviceList should return 2 devices");
+        }
+
+        [Test]
+        public void DeviceList_ShouldThrowIfNoSuchShop()
+        {
+            var testDB = new TestDB();
+            testDB.AddAccount(1, "Tertiark", "12345678-1234-1234-1234-123456789012");
+            var testDev = new Device("Device1", "DevType - Test", DateTime.Now, "xyz123a");
+            var testShop = new Shop(51, "Tertiark - Macclesfield", "427 Castle Street, Macclesfield, Cheshire, SK11 6XX", 1);
+            testShop.AddDevice(testDev);
+            testDB.AddShop(testShop);
+
+            var sut = new OracSync(testDB);
+            // Test with a non-existing shop ID
+            Assert.Throws<KeyNotFoundException>(() => 
+                sut.DeviceList("12345678-1234-1234-1234-123456789012", 999),
+                "DeviceList should throw KeyNotFoundException for non-existing shop ID");
+        }
     }
 }

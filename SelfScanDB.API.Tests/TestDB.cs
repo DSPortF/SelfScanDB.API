@@ -11,7 +11,7 @@ internal class TestDB : IScannerDB
 
     public List<AccountDto> ListAccounts()
     {
-        var ret= new List<AccountDto>();
+        var ret = new List<AccountDto>();
         foreach (var acc in _accounts)
         {
             ret.Add(new AccountDto(acc));
@@ -26,7 +26,7 @@ internal class TestDB : IScannerDB
 
     public List<Shop> ListAccountShops(string accountGuid)
     {
-        var ret=new List<Shop>();
+        var ret = new List<Shop>();
 
         var account = _accounts.FirstOrDefault(a => a.AccountGuid == accountGuid);
         if (account == null)
@@ -54,4 +54,19 @@ internal class TestDB : IScannerDB
         }
         throw new KeyNotFoundException($"Shop with ID {shopID} not found for account {accountGuid}.");
     }
+
+    public List<Device> DeviceList(string accountGuid, int shopID)
+    {
+        var account = _accounts.FirstOrDefault(a => a.AccountGuid == accountGuid);
+        if (account != null)
+        {
+            var shops = _shops.Where(s => s.AccountId == account.AccountId && s.ShopId == shopID).ToList();
+            if (shops.Count > 0)
+            {
+                return shops[0].Devices;
+            }
+        }
+        throw new KeyNotFoundException($"Shop with ID {shopID} not found for account {accountGuid}.");
+    }
 }
+

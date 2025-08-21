@@ -40,6 +40,9 @@ public class Program
         app.MapGet("/OracSync/ShopDetails/{AccountGuid}/{ShopID}", 
             ([FromServices] OracSync os, string accountGuid, int ShopID) => os.ShopDetails(accountGuid, ShopID));
 
+        app.MapGet("/OracSync/DeviceList/{AccountGuid}/{ShopID}", 
+            ([FromServices] OracSync os, string accountGuid, int ShopID) => os.DeviceList(accountGuid, ShopID));
+
         app.Run();
     }
 }

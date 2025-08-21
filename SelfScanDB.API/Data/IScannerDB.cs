@@ -4,6 +4,7 @@ namespace SelfScanDB.API.Data;
 
 public interface IScannerDB
 {
+    List<Device> DeviceList(string accountGuid, int shopID);
     List<AccountDto> ListAccounts();
     List<Shop> ListAccountShops(string accountGuid);
     ShopDto ShopDetails(string accountGuid, int shopID);
