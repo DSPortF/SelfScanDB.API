@@ -22,7 +22,7 @@ public class OracSync
         return _db.ListAccountShops(accountGuid);
     }
 
-    public Shop ShopDetails(string accountGuid, int shopID)
+    public ShopDto ShopDetails(string accountGuid, int shopID)
     {
         return _db.ShopDetails(accountGuid, shopID);
     }

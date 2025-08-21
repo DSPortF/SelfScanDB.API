@@ -41,7 +41,7 @@ internal class TestDB : IScannerDB
         _shops.Add(s);
     }
 
-    public Shop ShopDetails(string accountGuid, int shopID)
+    public ShopDto ShopDetails(string accountGuid, int shopID)
     {
         var account = _accounts.FirstOrDefault(a => a.AccountGuid == accountGuid);
         if (account != null)
@@ -49,7 +49,7 @@ internal class TestDB : IScannerDB
             var shops = _shops.Where(s => s.AccountId == account.AccountId && s.ShopId == shopID).ToList();
             if (shops.Count > 0)
             {
-                return shops[0];
+                return new ShopDto(shops[0]);
             }
         }
         throw new KeyNotFoundException($"Shop with ID {shopID} not found for account {accountGuid}.");
